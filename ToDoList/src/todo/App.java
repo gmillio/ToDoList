@@ -73,6 +73,7 @@ public class App extends Application{
         primaryStage.setTitle("To Do List");
         primaryStage.setScene(scene);
         primaryStage.show();
+        //test
 
     }
     public static void main(String[] args) throws Exception {
