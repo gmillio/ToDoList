@@ -35,7 +35,6 @@ public class App extends Application{
             
             @Override
             public void handle(ActionEvent event){
-                System.out.println("Hello Wolrd!");
                 NewList.list();
             }
         });
@@ -61,7 +60,6 @@ public class App extends Application{
         Label label = new Label();
         label.setText("Your Lists");
         label.setFont(new Font("Arial",16));
-        label.setTranslateX(-150);
         label.setTranslateY(-100);
 
         Separator separator = new Separator();
@@ -89,10 +87,12 @@ public class App extends Application{
 
                 Button bouton = new Button(listName[compteur]);
                 bouton.setId("list-button");
+                String name = listName[compteur];
                 bouton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event){
-                        //Todo
+                        ModifyList test = new ModifyList(name, primaryStage);
+                        primaryStage.close();
                     }
                 });
                 grille.add(bouton, colonne, ligne);

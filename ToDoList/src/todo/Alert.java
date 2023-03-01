@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
-
+import javafx.scene.text.Font;
 
 public class Alert {
     private Alert() {
@@ -20,10 +20,11 @@ public class Alert {
         StackPane layout = new StackPane();
 
         Label label = new Label("List created successfully");
-        label.setTranslateY(-25);
+        label.setFont(new Font("Arial",16));
+        label.setTranslateY(-20);
 
         Button button = new Button("Ok");
-        button.setTranslateY(5);
+        button.setTranslateY(12);
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
@@ -45,10 +46,11 @@ public class Alert {
         StackPane layout = new StackPane();
 
         Label label = new Label("List already exists");
-        label.setTranslateY(-25);
+        label.setFont(new Font("Arial",16));
+        label.setTranslateY(-20);
 
         Button button = new Button("Ok");
-        button.setTranslateY(5);
+        button.setTranslateY(12);
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
@@ -59,6 +61,7 @@ public class Alert {
         layout.getChildren().add(button);
 
         Scene scene = new Scene(layout, 200,70, Color.WHITE);
+        //scene.getStylesheets().add(getClass().getResource("/stylesheet.css").toExternalForm());
         primaryStage.setResizable(false);
         primaryStage.setTitle("Alert");
         primaryStage.setScene(scene);

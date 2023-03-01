@@ -32,6 +32,23 @@
 
 
 
+#save-button {
+    -fx-background-color: #02c912;
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-transition-duration: 0.4s;
+    -fx-cursor: pointer;
+}
+
+#save-button:hover{
+    -fx-background-color: #00e613;
+}
+
+
+
 #list-button {
     -fx-background-color: #e4e4e4;
     -fx-background-insets: 0,1,2,3;

@@ -1,0 +1,21 @@
+-Limiter le nombre de caratères pour nom ToDoList et tasks
+
+-Pouvoir enregistrer les changements
+
+-Pouvoir ajouter et supprimer des tasks
+
+-Enregistrer leur status, si fait ou non (via balises?)
+
+-stocker et récupérer la date de dernière modif
+
+-les trier par date de dernière modif?
+
+-Finir de personnaliser le design des alertes et du menu de création d'une nouvelle ToDoList
+
+-Pouvoir les rennomer depuis l'appli
+
+-Pouvoir les supprimer depuis l'appli
+
+-Faire un fichier de log
+
+-Actualiser en temps réel les ToDoLists (via addListener?)

@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 
 
@@ -26,16 +27,19 @@ public class NewList{
         StackPane layout = new StackPane();
 
         Label label = new Label("Name of the list:");
-        label.setTranslateY(-80);
-        label.setTranslateX(-55);
+        label.setFont(new Font("Arial",16));
+        label.setTranslateY(-50);
+        label.setTranslateX(-40);
         TextField name = new TextField("Name");
+        name.setFont(new Font("Arial",16));
         name.setPrefWidth(150);
         name.setMaxWidth(200);
-        name.setTranslateY(-55);
+        name.setTranslateY(-15);
 
         //Create button, create a new list and verify if it already exists
         Button create = new Button("Create");
         create.setTranslateX(-50);
+        create.setTranslateY(35);
         create.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
@@ -57,6 +61,7 @@ public class NewList{
         //Cancel button, close the stage
         Button cancel = new Button("Cancel");
         cancel.setTranslateX(50);
+        cancel.setTranslateY(35);
         cancel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
