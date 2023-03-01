@@ -1,0 +1,49 @@
+#create-button {
+    -fx-background-color: #008CBA;
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-transition-duration: 0.4s;
+    -fx-cursor: pointer;
+}
+
+#create-button:hover{
+    -fx-background-color: #009ed3;
+}
+
+
+
+#quit-button {
+    -fx-background-color: #d40000;
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-transition-duration: 0.4s;
+    -fx-cursor: pointer;
+}
+
+#quit-button:hover{
+    -fx-background-color: #ff0f0f;
+}
+
+
+
+#list-button {
+    -fx-background-color: #e4e4e4;
+    -fx-background-insets: 0,1,2,3;
+    -fx-border-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: rgb(19, 19, 19);
+    -fx-font-size: 16px;
+    -fx-transition-duration: 0.4s;
+    -fx-cursor: pointer;
+    -fx-border-color: black;
+}
+
+#list-button:hover{
+    -fx-background-color: #ffffff;
+}
