@@ -3,8 +3,6 @@ package todo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Observable;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,7 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -24,10 +25,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class ModifyList {
-    private ModifyList() {
-        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
-    }
-
     public ModifyList(String nameList, Stage mainStage){
         Stage primaryStage = new Stage();
         StackPane layout = new StackPane();
@@ -95,17 +92,18 @@ public class ModifyList {
         
 
         //Calcul le nombre de lignes et colonnes pour la grille
-        int nbColonnes = 2;
+        int nbColonnes = 3;
         int nbLignes = tasks.length;
 
         //Créer la grille pour les boutons
         GridPane grille = new GridPane();
-        grille.setTranslateY(150);
+        //grille.setTranslateY(150);
         grille.setTranslateX(25);
         grille.setPadding(new Insets(10));
         grille.setHgap(10);
         grille.setVgap(10);
 
+        
         int compteur=0;
         for(int ligne=0; ligne<nbLignes; ligne++){
             if(compteur>=tasks.length)
@@ -127,11 +125,34 @@ public class ModifyList {
                     lblTask.setGraphic(null);
                 }
             });
+            //----------------------------------------------------------------------------
+            //-------------------Bin button--------------------
+            Image img = new Image("/todo/Images/bin.jpg");
+            ImageView view = new ImageView(img);
+            view.setFitHeight(19);
+            view.setPreserveRatio(true);
+            Button bin = new Button("",view);
+            bin.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+            bin.setOnMouseEntered(event ->{
+                bin.setStyle("-fx-background-color: #cfcfcf;");
+            });
+            bin.setOnMouseExited(event ->{
+                bin.setStyle("-fx-background-color: transparent;");
+            });
+            //-----------------------------------------------------------------------------
             compteur++;
             grille.add(check, 1, ligne);
             grille.add(lblTask, 2, ligne);
+            grille.add(bin, 3, ligne);
         }
-        layout.getChildren().add(grille);
+        // The scrolling panel
+        ScrollPane scroll = new ScrollPane();
+        scroll.setPrefSize(600, 300);
+        scroll.setMaxHeight(468);
+        scroll.setTranslateY(65);
+        scroll.setStyle("-fx-background-color: transparent;");
+        scroll.setContent(grille);
+        layout.getChildren().add(scroll);
 
         Scene scene = new Scene(layout, 600,600, Color.WHITE);
         scene.getStylesheets().add(getClass().getResource("/stylesheet.css").toExternalForm());

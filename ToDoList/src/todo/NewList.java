@@ -35,6 +35,12 @@ public class NewList{
         name.setPrefWidth(150);
         name.setMaxWidth(200);
         name.setTranslateY(-15);
+        //set character limit to 10
+        name.setPrefColumnCount(10);
+        name.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue.length()>10)
+                name.setText(oldValue);
+        });
 
         //Create button, create a new list and verify if it already exists
         Button create = new Button("Create");

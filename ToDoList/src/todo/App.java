@@ -125,13 +125,6 @@ public class App extends Application{
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
-        
-
-       /* Parent root = FXMLLoader.load(getClass().getResource("test.fxml"));
-        Scene scene = new Scene(root, 600, 400);
-        primaryStage.setTitle("To Do List");
-        primaryStage.setScene(scene);
-        primaryStage.show();*/
     }
 
     public static int count(){
