@@ -91,18 +91,15 @@ public class ModifyList {
         String[] tasks = listTasks(nameList);
         
 
-        //Calcul le nombre de lignes et colonnes pour la grille
-        int nbColonnes = 3;
+        //Calcul le nombre de lignes pour la grille
         int nbLignes = tasks.length;
 
         //Créer la grille pour les boutons
         GridPane grille = new GridPane();
-        //grille.setTranslateY(150);
         grille.setTranslateX(25);
         grille.setPadding(new Insets(10));
         grille.setHgap(10);
         grille.setVgap(10);
-
         
         int compteur=0;
         for(int ligne=0; ligne<nbLignes; ligne++){
@@ -148,8 +145,8 @@ public class ModifyList {
         // The scrolling panel
         ScrollPane scroll = new ScrollPane();
         scroll.setPrefSize(600, 300);
-        scroll.setMaxHeight(468);
-        scroll.setTranslateY(65);
+        scroll.setMaxHeight(460);
+        scroll.setTranslateY(70);
         scroll.setStyle("-fx-background-color: transparent;");
         scroll.setContent(grille);
         layout.getChildren().add(scroll);
