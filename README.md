@@ -8,7 +8,7 @@ Remaining tasks:
 
 -Be able to save changes
 
--Be able to add and remove tasks
+-Be able to add and remove tasks (button remove already created but not working yet)
 
 -Record their status, if done or not (via tags?)
 
