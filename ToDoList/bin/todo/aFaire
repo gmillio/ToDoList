@@ -2,7 +2,7 @@
 
 -Pouvoir enregistrer les changements
 
--Pouvoir ajouter et supprimer des tasks
+-Pouvoir ajouter des tasks
 
 -Enregistrer leur status, si fait ou non (via balises?)
 
@@ -19,3 +19,8 @@
 -Faire un fichier de log
 
 -Actualiser en temps réel les ToDoLists (via addListener?)
+
+
+BUGS A CORRIGER:
+
+- Lors de l'appui du bouton supprimer une task, c'est quoi qu'il arrive la dernière qui est supprimée

@@ -3,31 +3,29 @@ package todo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 
 public class ModifyList {
+    int ligne=0;
     public ModifyList(String nameList, Stage mainStage){
         Stage primaryStage = new Stage();
         StackPane layout = new StackPane();
+        String listFile = "C:/Users/amace/Documents/vs code/app/ToDoList/src/todo/Lists/";
+
 
 
         //Button back to menu
@@ -100,48 +98,10 @@ public class ModifyList {
         grille.setPadding(new Insets(10));
         grille.setHgap(10);
         grille.setVgap(10);
-        
-        int compteur=0;
-        for(int ligne=0; ligne<nbLignes; ligne++){
-            if(compteur>=tasks.length)
-                break;
 
-            CheckBox check = new CheckBox();
-            Label lblTask = new Label(tasks[compteur]);
-            lblTask.setFont(new Font("Arial",16));
-            check.selectedProperty().addListener((observable, oldValue, newValue) -> {
-                if(newValue){
-                    Text text = new Text(lblTask.getText());
-                    text.setFill(Color.GRAY);
-                    text.setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 16));
-                    lblTask.setGraphic(text);
-                    lblTask.setText("");
-                }else{
-                    lblTask.setTextFill(Color.BLACK);
-                    lblTask.setText(((Text) lblTask.getGraphic()).getText());
-                    lblTask.setGraphic(null);
-                }
-            });
-            //----------------------------------------------------------------------------
-            //-------------------Bin button--------------------
-            Image img = new Image("/todo/Images/bin.jpg");
-            ImageView view = new ImageView(img);
-            view.setFitHeight(19);
-            view.setPreserveRatio(true);
-            Button bin = new Button("",view);
-            bin.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
-            bin.setOnMouseEntered(event ->{
-                bin.setStyle("-fx-background-color: #cfcfcf;");
-            });
-            bin.setOnMouseExited(event ->{
-                bin.setStyle("-fx-background-color: transparent;");
-            });
-            //-----------------------------------------------------------------------------
-            compteur++;
-            grille.add(check, 1, ligne);
-            grille.add(lblTask, 2, ligne);
-            grille.add(bin, 3, ligne);
-        }
+        ListGrid.createGrid(grille, nbLignes, tasks, listFile, nameList);
+        
+        
         // The scrolling panel
         ScrollPane scroll = new ScrollPane();
         scroll.setPrefSize(600, 300);
@@ -166,7 +126,7 @@ public class ModifyList {
      * @param nameList
      * @return a list of the content of each line
      */
-    private String[] listTasks(String nameList){
+    public static String[] listTasks(String nameList){
         //reads content of the file
         String line;
         int i=0;
@@ -192,4 +152,5 @@ public class ModifyList {
         }
         return task;
     }
+
 } 
