@@ -8,7 +8,7 @@ Remaining tasks:
 
 -Be able to save changes
 
--Be able to add and remove tasks (button remove already created but not working yet)
+-Be able to add tasks
 
 -Record their status, if done or not (via tags?)
 
@@ -25,3 +25,10 @@ Be able to re-send them from the app
 -Make a log file
 
 -Update in real time the ToDoLists (via addListener?)
+
+
+
+
+BUGS TO FIX:
+
+- When you press the delete button, the last task is always deleted and not the others
