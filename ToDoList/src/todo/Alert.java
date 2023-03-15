@@ -41,6 +41,34 @@ public class Alert {
         primaryStage.show();
     }    
 
+
+    public static void createdTask(){
+        Stage primaryStage = new Stage();
+        StackPane layout = new StackPane();
+
+        Label label = new Label("Task created successfully");
+        label.setFont(new Font("Arial",16));
+        label.setTranslateY(-20);
+
+        Button button = new Button("Ok");
+        button.setTranslateY(12);
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event){
+                primaryStage.close();
+            }
+        });
+        layout.getChildren().add(label);
+        layout.getChildren().add(button);
+
+        Scene scene = new Scene(layout, 200,70, Color.WHITE);
+        primaryStage.setResizable(false);
+        primaryStage.setTitle("Alert");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }    
+
+
     public static void error(){
         Stage primaryStage = new Stage();
         StackPane layout = new StackPane();

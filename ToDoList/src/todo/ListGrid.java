@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -71,7 +72,7 @@ public class ListGrid {
             
                 @Override
                 public void handle(ActionEvent event){
-                    binButton(grille, nbLignes, tasks, listFile, nameList, ligne);
+                    binButton(grille, listFile, nameList, ligne);
                 }
             });
             //-----------------------------------------------------------------------------
@@ -80,52 +81,62 @@ public class ListGrid {
             grille.add(lblTask, 2, ligne);
             grille.add(bin, 3, ligne);
         }
+
+
+        //Button add
+        Image img2 = new Image("/todo/Images/plus.png");
+        ImageView view2 = new ImageView(img2);
+        view2.setFitHeight(25);
+        view2.setPreserveRatio(true);
+        Button add = new Button("New task",view2);
+        add.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+        add.setOnMouseEntered(event ->{
+           add.setStyle("-fx-background-color: #cfcfcf;");
+        });
+        add.setOnMouseExited(event ->{
+           add.setStyle("-fx-background-color: transparent;");
+        });
+        add.setOnAction(new EventHandler<ActionEvent>() {
+            
+            @Override
+            public void handle(ActionEvent event){
+                AddTask.addTask( grille,  listFile,  nameList);
+            }
+        });
+        grille.add(add, 1, ligne+1);
     }
 
 
 
-
-
-
-    static void binButton(GridPane grille, int nbLignes, String[] tasks, String listFile, String nameList, int ligne){
+    static void binButton(GridPane grille, String listFile, String nameList, int ligne){
         try {
             File inputFile = new File(listFile + nameList);
             FileInputStream fileInputStream = new FileInputStream(inputFile);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
 
-            File tempFile = new File(listFile + "tempo");
-            FileOutputStream fileOutputStream;
-            fileOutputStream = new FileOutputStream(tempFile);
-            PrintWriter printWriter = new PrintWriter(fileOutputStream);
+            FileWriter tempo = new FileWriter(listFile + "tempo", true);
+            File newFile = new File(listFile + "tempo");
 
             String line;
             int lineNumber = 1;
-            int i = 0;
-            String[] newTasks = new String[nbLignes-1];// a modifier
             while ((line = bufferedReader.readLine()) != null) {
-
                 if (lineNumber != ligne) {
-                    printWriter.println(line);
-                    newTasks[i] = line;
+                    tempo.write(line+"\n");
                 }
                 lineNumber++;
-                i++;
             }
             bufferedReader.close();
-            printWriter.close();
             fileInputStream.close();
-            fileOutputStream.close();
+            tempo.close();
             
-            // Supprimez le fichier original et renommez le fichier temporaire
+            //Supprime le fichier original et renomme le fichier temporaire
             if (inputFile.delete()) {
-                tempFile.renameTo(inputFile);
+                newFile.renameTo(inputFile);
             }
-
             grille.getChildren().clear();
 
-            //newTasks = ModifyList.listTasks(nameList);
-            tasks = ModifyList.listTasks(nameList);
-            nbLignes = tasks.length;
+            String[] tasks = ModifyList.listTasks(nameList);
+            int nbLignes = tasks.length;
 
             createGrid(grille, nbLignes, tasks, listFile, nameList);
 

@@ -1,0 +1,23 @@
+-Pouvoir enregistrer les changements
+
+-Enregistrer leur status, si fait ou non (via balises?)
+
+-stocker et récupérer la date de dernière modif
+
+-les trier par date de dernière modif?
+
+-Finir de personnaliser le design des alertes et du menu de création d'une nouvelle ToDoList
+
+-Pouvoir les rennomer depuis l'appli
+
+-Pouvoir les supprimer depuis l'appli
+
+-Faire un fichier de log
+
+
+
+BUGS A CORRIGER:
+
+- Lors de l'appui du bouton supprimer une task, c'est quoi qu'il arrive la dernière qui est supprimée
+
+- La mise en forme des lists change quand on survole les boutons supprimer
