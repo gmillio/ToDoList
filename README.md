@@ -4,7 +4,7 @@ a ToDoList in Java. Not finished yet
 
 Remaining tasks:
 
--Limit the number of characters for tasks names (100 car?)
+-Limit the number of characters for tasks names
 
 -Be able to save changes
 
