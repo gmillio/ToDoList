@@ -4,31 +4,26 @@ a ToDoList in Java. Not finished yet
 
 Remaining tasks:
 
--Limit the number of characters for tasks names
+- Be able to save changes
 
--Be able to save changes
+- Record their status, if done or not (via tags?)
 
--Be able to add tasks
+- Store and retrieve the date of last modification
 
--Record their status, if done or not (via tags?)
+- Sort them by last modification date?
 
--Store and retrieve the date of last modification
+- Finish customizing the design of alerts and the menu for creating a new ToDoList
 
--Sort them by last modification date?
+- Be able to re-send them from the app
 
--Finish customizing the design of alerts and the menu for creating a new ToDoList
+- Be able to delete them from the app
 
-Be able to re-send them from the app
-
--Be able to delete them from the app
-
--Make a log file
-
--Update in real time the ToDoLists (via addListener?)
-
+- Make a log file
 
 
 
 BUGS TO FIX:
 
 - When you press the delete button, the last task is always deleted and not the others
+
+- The layout of the lists changes when you hover over the delete buttons
