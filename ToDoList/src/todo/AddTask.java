@@ -88,7 +88,7 @@ public class AddTask {
         boolean res = false;
         try {
             FileWriter writer = new FileWriter(listFile + nameList, true);
-            writer.write(name+"\n");
+            writer.write("0,"+name+"\n");
             writer.close();
 
             grille.getChildren().clear();

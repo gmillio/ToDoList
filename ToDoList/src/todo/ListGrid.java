@@ -4,11 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -39,8 +37,19 @@ public class ListGrid {
                 break;
 
             CheckBox check = new CheckBox();
-            Label lblTask = new Label(tasks[compteur]);
+
+            String[] data = tasks[compteur].split(",");
+            String isCheck = data[0];
+            Label lblTask = new Label(data[1]);
             lblTask.setFont(new Font("Arial",16));
+            if(isCheck.equals("1")){
+                check.setSelected(true);
+                Text text = new Text(lblTask.getText());
+                text.setFill(Color.GRAY);
+                text.setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 16));
+                lblTask.setGraphic(text);
+                lblTask.setText("");
+            }
             check.selectedProperty().addListener((observable, oldValue, newValue) -> {
                 if(newValue){
                     Text text = new Text(lblTask.getText());

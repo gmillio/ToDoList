@@ -1,20 +1,14 @@
-Pain
-Lait
-Oeuf
-Viande
-Cereales
-Chocolat
-Yaourt
-Tomates
-Pommes
-Poisson
-Creme fraiche
-ceci est une longue task
-Gruyere
-test
-test
-test
-test
-test
-test
-test
+1,Pain
+1,Lait
+0,Oeuf
+1,Viande
+0,Cereales
+0,Chocolat
+0,Yaourt
+1,Tomates
+0,Pommes
+0,Poisson
+1,Creme fraiche
+0,ceci est une longue task
+0,Gruyere
+0,test

@@ -1,8 +1,8 @@
-hello
-hola
-bonjour
-salut
-comment va
-test 1
-test 2
-test 3
+0,hello
+0,hola
+1,bonjour
+0,salut
+1,comment va
+1,test 1
+0,test 2
+0,test 3
