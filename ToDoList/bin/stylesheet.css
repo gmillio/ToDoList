@@ -44,15 +44,15 @@
 
 
 #list-button {
-    -fx-background-color: #e4e4e4;
+    -fx-background-color: #fcf267;
     -fx-background-insets: 0,1,2,3;
     -fx-border-radius: 3,2,2,2;
     -fx-padding: 12 30 12 30;
     -fx-text-fill: rgb(19, 19, 19);
     -fx-font-size: 16px;
-    -fx-border-color: black;
+    -fx-border-color: white;
 }
 
 #list-button:hover{
-    -fx-background-color: #ffffff;
+    -fx-background-color: #fcee28;
 }

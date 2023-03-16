@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,27 +31,46 @@ public class ListGrid {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 
-    static void createGrid(GridPane grille, int nbLignes, String[] tasks, String listFile, String nameList){
+    static void createGrid(GridPane grille, int nbLignes, String[] tasks, String listFile, String nameList) throws IOException{
         int compteur=0;
         for( ligne=0; ligne<nbLignes; ligne++){
             if(compteur>=tasks.length)
                 break;
 
             CheckBox check = new CheckBox();
+            Label lblTask = new Label();
 
-            String[] data = tasks[compteur].split(",");
-            String isCheck = data[0];
-            Label lblTask = new Label(data[1]);
-            lblTask.setFont(new Font("Arial",16));
-            if(isCheck.equals("1")){
-                check.setSelected(true);
-                Text text = new Text(lblTask.getText());
-                text.setFill(Color.GRAY);
-                text.setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 16));
-                lblTask.setGraphic(text);
-                lblTask.setText("");
+            //Verifier si il y a un status
+            StringReader stringReader = new StringReader(tasks[compteur]);
+            BufferedReader bufferedReader = new BufferedReader(stringReader);
+            String verify;
+            while((verify = bufferedReader.readLine()) != null){
+                //Il y a un status
+                if(verify.contains(",")){
+                    String[] data = tasks[compteur].split(",");
+                    String isCheck = data[0];
+                    lblTask.setText(data[1]);
+                    lblTask.setFont(new Font("Arial",16));
+                    //Regarde le status
+                    if(isCheck.equals("1")){
+                        check.setSelected(true);
+                        Text text = new Text(lblTask.getText());
+                        text.setFill(Color.GRAY);
+                        text.setFont(Font.font("Verdana", FontWeight.NORMAL, FontPosture.ITALIC, 16));
+                        lblTask.setGraphic(text);
+                        lblTask.setText("");
+                    }
+                //Il n'y a pas de status
+                }else{
+                    lblTask.setText(tasks[compteur]);
+                    lblTask.setFont(new Font("Arial",16));
+                    lblTask.setGraphic(null);
+                }
             }
+
+            
             check.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                //Change la forme du texte selon le status de la checkBox
                 if(newValue){
                     Text text = new Text(lblTask.getText());
                     text.setFill(Color.GRAY);

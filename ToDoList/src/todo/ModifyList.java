@@ -21,7 +21,7 @@ import javafx.scene.text.Font;
 
 public class ModifyList {
     int ligne=0;
-    public ModifyList(String nameList, Stage mainStage){
+    public ModifyList(String nameList, Stage mainStage) throws IOException{
         Stage primaryStage = new Stage();
         StackPane layout = new StackPane();
         String listFile = "C:/Users/amace/Documents/vs code/app/ToDoList/src/todo/Lists/";

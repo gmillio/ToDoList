@@ -2,6 +2,11 @@ package todo;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 import javafx.application.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,12 +14,15 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 
 public class App extends Application{
@@ -23,7 +31,7 @@ public class App extends Application{
     public void start(Stage primaryStage) throws IOException{
 
         int nbToDoList = count();
-        String[] listName = listOfLists(nbToDoList);
+        String[][] listName = listOfLists(nbToDoList);
 
         //button creating a new list
         Button btn = new Button();
@@ -73,10 +81,19 @@ public class App extends Application{
 
         //Créer la grille pour les boutons
         GridPane grille = new GridPane();
-        grille.setTranslateY(125);
         grille.setPadding(new Insets(10));
         grille.setHgap(10);
         grille.setVgap(10);
+
+
+        // The scrolling panel
+        ScrollPane scroll = new ScrollPane();
+        scroll.setPrefSize(600, 300);
+        scroll.setMaxHeight(320);
+        scroll.setTranslateY(80);
+        scroll.setStyle("-fx-background-color: transparent;");
+        scroll.setContent(grille);
+        root.getChildren().add(scroll);
 
         //Créer les boutons
         int compteur=0;
@@ -85,13 +102,29 @@ public class App extends Application{
                 if(compteur>=nbToDoList)
                     break;
 
-                Button bouton = new Button(listName[compteur]);
+                Text text1 = new Text(listName[compteur][0]);
+                Text text2 = new Text(listName[compteur][1]); 
+                Text text3 = new Text(listName[compteur][2]);
+                text1.setFont(Font.font(19));
+                text2.setFont(Font.font(11));
+                text3.setFont(Font.font(9));
+                VBox vbox = new VBox(text1, text2, text3);
+
+    
+                Button bouton = new Button();
+                bouton.setGraphic(vbox);
                 bouton.setId("list-button");
-                String name = listName[compteur];
+                bouton.setMinHeight(145);
+                String name = listName[compteur][0];
                 bouton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event){
-                        ModifyList test = new ModifyList(name, primaryStage);
+                        try {
+                            ModifyList test = new ModifyList(name, primaryStage);
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
                         primaryStage.close();
                     }
                 });
@@ -119,7 +152,7 @@ public class App extends Application{
 
 
         
-        Scene scene = new Scene(root, 600, 400, Color.WHITE);
+        Scene scene = new Scene(root, 600, 500, Color.WHITE);
         scene.getStylesheets().add(getClass().getResource("/stylesheet.css").toExternalForm());
         primaryStage.setTitle("ToDoList");
         primaryStage.setResizable(false);
@@ -141,18 +174,28 @@ public class App extends Application{
     }
 
 
-    public static String[] listOfLists(int nbToDoList){
+    public static String[][] listOfLists(int nbToDoList){
         File directory = new File("C:/Users/amace/Documents/vs code/app/ToDoList/src/todo/Lists");
         File[] list = directory.listFiles();
         int cur = 0;
-        String[] listName = new String[nbToDoList];
+        String[][] res = new String[nbToDoList][3];
         for(File item : list){
             if(item.isFile()){
-                listName[cur] = item.getName();
+                //list name
+                res[cur][0] = item.getName();
+                //preview of content
+                res[cur][1] = Preview.preview(res[cur][0], directory.getAbsolutePath());
+                //last modification
+                long lastModified = item.lastModified();
+                Instant instant = Instant.ofEpochMilli(lastModified);
+                LocalDateTime dateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy 'at' HH:mm");
+                String time = dateTime.format(formatter);
+                res[cur][2] = "last mod: "+ time;
                 cur++;
             }
         }
-        return listName;
+        return res;
     }
 
     public static void main(String[] args) throws Exception {

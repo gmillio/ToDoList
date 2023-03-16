@@ -89,7 +89,6 @@ public class Alert {
         layout.getChildren().add(button);
 
         Scene scene = new Scene(layout, 200,70, Color.WHITE);
-        //scene.getStylesheets().add(getClass().getResource("/stylesheet.css").toExternalForm());
         primaryStage.setResizable(false);
         primaryStage.setTitle("Alert");
         primaryStage.setScene(scene);

@@ -4,18 +4,15 @@ Tâches à faire:
 
 - Les trier en fonction de leur status( si coché, apparaît en bas)
 
-- stocker et récupérer la date de dernière modif
-
-- les trier par date de dernière modif?
+- Trier les listes par date de dernière modif?
 
 - Finir de personnaliser le design des alertes et du menu de création d'une nouvelle ToDoList
 
-- Pouvoir les rennomer depuis l'appli
+- Pouvoir rennomer les listes depuis l'appli
 
 - Pouvoir les supprimer depuis l'appli
 
 - Faire un fichier de log
-
 
 
 BUGS A CORRIGER:
