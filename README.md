@@ -4,26 +4,23 @@ a ToDoList in Java. Not finished yet
 
 Remaining tasks:
 
-- Be able to save changes
+- Be able to save the changes
 
-- Store and retrieve the date of last modification
+- Sort them by status (if checked, appears at the bottom)
 
-- Sort them by last modification date?
+- Sort the lists by date of last modification?
 
-- Finish customizing the design of alerts and the menu for creating a new ToDoList
+- Finish customizing the design of the alerts and the menu for creating a new ToDoList
 
-- Be able to rename them from the app
+- Be able to rename lists from the app
 
 - Be able to delete them from the app
 
 - Make a log file
 
-- Manage possible errors of absence of status
 
+BUGS TO CORRECT:
 
+- When pressing the delete button, the last task is deleted
 
-BUGS TO FIX:
-
-- When you press the delete button, the last task is always deleted and not the others
-
-- The layout of the lists changes when you hover over the delete buttons
+- The formatting of the lists changes when hovering over the deleted buttons
