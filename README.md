@@ -19,7 +19,7 @@ Remaining tasks:
 - Make a log file
 
 
-BUGS TO CORRECT:
+BUGS TO FIX:
 
 - When pressing the delete button, the last task is deleted
 
