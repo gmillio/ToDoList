@@ -12,7 +12,7 @@ Remaining tasks:
 
 - Finish customizing the design of alerts and the menu for creating a new ToDoList
 
-- Be able to re-send them from the app
+- Be able to rename them from the app
 
 - Be able to delete them from the app
 
