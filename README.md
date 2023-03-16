@@ -6,8 +6,6 @@ Remaining tasks:
 
 - Be able to save changes
 
-- Record their status, if done or not (via tags?)
-
 - Store and retrieve the date of last modification
 
 - Sort them by last modification date?
@@ -19,6 +17,8 @@ Remaining tasks:
 - Be able to delete them from the app
 
 - Make a log file
+
+- Manage possible errors of absence of status
 
 
 
