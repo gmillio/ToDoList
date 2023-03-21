@@ -14,7 +14,7 @@ Remaining tasks:
 
 - Be able to rename lists from the app
 
-- Be able to delete lists from the app
+- Be able to delete lists 
 
 - Make a log file
 
